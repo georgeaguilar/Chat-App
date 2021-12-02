@@ -7,7 +7,7 @@ const ChannelSearch = () => {
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const getChannel = async () => {
+    const getChannels = async () => {
         try {
             //TODO: fetch channels
         } catch(error) {
@@ -20,7 +20,7 @@ const ChannelSearch = () => {
 
         setLoading(true);
         setQuery(event.target.value)
-        getChannel(event.target.value)
+        getChannels(event.target.value)
     }
     return (
         <div className="channel-search__container">
