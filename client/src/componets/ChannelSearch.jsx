@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useChatContext } from 'stream-chat-react';
 
+import { ResultsDropdown } from './';
 import {SearchIcon} from '../assets';
 
 const ChannelSearch = ({setToggleContainer}) => {
@@ -17,7 +18,7 @@ const ChannelSearch = ({setToggleContainer}) => {
         }
     }, [query])
 
-    const getChannels = async () => {
+    const getChannels = async (text) => {
         try {
             const channelResponse = client.queryChannels({
                 type: 'team', 
