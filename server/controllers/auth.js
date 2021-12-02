@@ -1,7 +1,9 @@
 const {connect} = require('getstream');
 const bcrypt = require('bcrypt');
-const StreatChat = require('stream-chat');
+const StreamChat = require('stream-chat').StreamChat;
 const crypto = require('crypto');
+
+require('dotenv').config();
 
 const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
@@ -34,7 +36,7 @@ const singup = async (req, res) => {
         const {username, password} = req.body;
 
         const serverClient = connect(api_key, api_secret, app_id);
-        const client = StreatChat.getInstance(api_key, api_secret);
+        const client = StreamChat.getInstance(api_key, api_secret);
 
         const {users} = await client.queryUsers({name: username});
 
