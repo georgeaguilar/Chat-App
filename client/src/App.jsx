@@ -7,6 +7,8 @@ import { ChannelContainer, ChannelListContainer, Auth } from './componets';
 
 import './App.css';
 
+import 'stream-chat-react/dist/css/index.css';
+
 const cookies = new Cookies();
 
 const apiKey = 't8pts79hnpnp';
@@ -38,10 +40,16 @@ const App = () => {
                 <ChannelListContainer
                     isCreating={isCreating}
                     setIsCreating={setIsCreating}
-                    isEditing={isEditing}
+                    setCreateType={setCreateType}
                     setIsEditing={setIsEditing}
                 />
-                <ChannelContainer />
+                <ChannelContainer 
+                    isCreating={isCreating}
+                    setIsCreating={setIsCreating}
+                    isEditing={isEditing}
+                    setIsEditing={setIsEditing}
+                    createType={createType}
+                />
             </Chat>
         </div>
     )
