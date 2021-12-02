@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Avatar, useChatChannel, useChatContext } from "stream-chat-react";
+import { Avatar, useChatContext } from "stream-chat-react";
 
 import { InviteIcon } from "../assets";
 
@@ -29,7 +29,7 @@ const UserItem = ({user, setSelectedUsers}) => {
     }
 
     return (
-        <div className="user-item__wrapper">
+        <div className="user-item__wrapper" onClick={handleSelect}>
             <div className="user-item__name-wrapper">
                 <Avatar image={user.image} name={user.fullName || user.id} size={32}/>
                 <p className="user-item__name">{user.fullName || user.id}</p>
@@ -108,3 +108,5 @@ const UserList = ({setSelectedUsers}) => {
         </div>
     )
 }
+
+export default UserList;

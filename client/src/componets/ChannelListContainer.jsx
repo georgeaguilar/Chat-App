@@ -38,7 +38,7 @@ const customChannelMessagingFilter = (channels) => {
     return channels.filter((channel) => channel.type === 'messaging');
 }
 
-const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing }) => {
+const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {
     const { client } = useChatContext();
     
     const logout = () => {
@@ -61,7 +61,7 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
             <CompanyHeader />
             <ChannelSearch />
             <ChannelList 
-                filters={{}}
+                filters={filters}
                 channelRenderFilterFn={customChannelTeamFilter}
                 List={(listProps) => (
                     <TeamChannelList 
@@ -71,17 +71,19 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
                         setIsCreating={setIsCreating}
                         setCreateType={setCreateType} 
                         setIsEditing={setIsEditing}
+                        setToggleContainer={setToggleContainer}
                     />
                 )}
                 Preview={(previewProps) => (
                     <TeamChannelPreview 
                         {...previewProps}
+                        setToggleContainer={setToggleContainer}
                         type="team"
                     />
                 )}
             />
             <ChannelList 
-                filters={{}}
+                filters={filters}
                 channelRenderFilterFn={customChannelMessagingFilter}
                 List={(listProps) => (
                     <TeamChannelList 
@@ -91,11 +93,13 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
                         setIsCreating={setIsCreating}
                         setCreateType={setCreateType} 
                         setIsEditing={setIsEditing}
+                        setToggleContainer={setToggleContainer}
                     />
                 )}
                 Preview={(previewProps) => (
                     <TeamChannelPreview 
                         {...previewProps}
+                        setToggleContainer={setToggleContainer}
                         type="messaging"
                     />
                 )}
